@@ -7,34 +7,42 @@ const authReducer = (state, action) => {
   switch (action.type) {
     case 'add_error':
       return { ...state, errorMessage: action.payload };
-    case 'signup':
+    case 'signin':
       return { errorMessage: '', token: action.payload };
+    case 'clear_error_message':
+      return { ...state, errorMessage: '' };
     default:
       return state;
   }
 };
 
-const signup = (dispatch) => {
+const clearErrorMessage = dispatch => () => {
+  dispatch({ type: 'clear_error_message' });
+}
+
+const signup = dispatch => {
   return async ({email, password}) => {
     try {
       const response = await http.post('/signup', {email, password});
       await AsyncStorage.setItem('token', response.data.token);
-      dispatch({ type: 'signup', payload: response.data.token });
+      dispatch({ type: 'signin', payload: response.data.token });
 
       navigate('TrackList');
     } catch (error) {
       dispatch({ type: 'add_error', payload: 'Algo fue mal al crear la cuenta' });
     }
-    // if we sign up, modify our state
-
-    // if fails, reflect an error message
   };
 };
 
-const signin = (dispatch) => {
-  return ({email, password}) => {
-
-  };
+const signin = dispatch => async ({ email, password }) => {
+  try {
+    const response = await http.post('/signin', { email, password });
+    await AsyncStorage.setItem('token', response.data.token);
+    dispatch({ type: 'signin', payload: response.data.token });
+    navigate('TrackList');
+  } catch (error) {
+    dispatch({ type: 'add_error', payload: 'Algo fue mal con el logeo' })
+  }
 };
 
 const signout = (dispatch) => {
@@ -45,6 +53,6 @@ const signout = (dispatch) => {
 
 export const { Provider, Context} = createDataContext(
   authReducer,
-  {signup, signin, signout},
+  {signup, signin, signout, clearErrorMessage},
   { token: null, errorMessage: '' }
 )
