@@ -9,7 +9,7 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
 
   return (
     <Spacer>
-      <Text h3>{ headerText }</Text>
+      <Text h3 style={styles.headerText}>{ headerText }</Text>
       <Input
         label="Email"
         value={email}
@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'red',
     marginBottom: 10,
+  },
+  headerText: {
+    marginBottom: 20
   }
 });
 
