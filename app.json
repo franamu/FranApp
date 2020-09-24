@@ -4,9 +4,9 @@
     "slug": "FranApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/app-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,6 +21,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.franamuchastegui.FranApp",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDwKE-8WEOZIapPUa515fD7iRroAlEtlWM"
+        }
+      }
     }
   }
 }

@@ -23,7 +23,7 @@ const tryLocalSignIn = dispatch => async () => {
 
   if (token ) {
     dispatch({ type: 'signin', payload: token });
-    navigate('TrackList');
+    navigate('App');
   } else {
     navigate('SignIn');
   }
@@ -40,7 +40,7 @@ const signup = dispatch => {
       await AsyncStorage.setItem('token', response.data.token);
       dispatch({ type: 'signin', payload: response.data.token });
 
-      navigate('TrackList');
+      navigate('App');
     } catch (error) {
       dispatch({ type: 'add_error', payload: 'Algo fue mal al crear la cuenta' });
     }
@@ -52,7 +52,7 @@ const signin = dispatch => async ({ email, password }) => {
     const response = await http.post('/signin', { email, password });
     await AsyncStorage.setItem('token', response.data.token);
     dispatch({ type: 'signin', payload: response.data.token });
-    navigate('TrackList');
+    navigate('App');
   } catch (error) {
     console.log('error', error);
     dispatch({ type: 'add_error', payload: 'Algo fue mal con el logeo' })
