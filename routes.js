@@ -3,17 +3,21 @@ import {
   createAppContainer,
   createSwitchNavigator
 } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import AccountScreen from './src/screens/AccountScreen';
 import SignInScreen from './src/screens/SignInScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import StatusScreen from './src/screens/StatusScreen';
+import Status from './src/screens/Status';
+
+// Helpers
+import LogoutScreen from './src/screens/Logout';
 
 //About me
 import AboutMe from './src/screens/AboutMe';
@@ -31,8 +35,7 @@ const trackListNavigator = createStackNavigator({
 
 const FlowBottomTrack = createBottomTabNavigator({
   TrackList: trackListNavigator,
-  TrackCreate: TrackCreateScreen,
-  Account: AccountScreen
+  TrackCreate: TrackCreateScreen
 }, {
     initialRouteName: 'TrackList'
 })
@@ -47,6 +50,23 @@ const AppContainer = createStackNavigator({
   },
 });
 
+const StatusStack = createStackNavigator({
+  StatusScreen: {
+    screen: StatusScreen,
+    navigationOptions: {
+      title: 'Pantallas de estados'
+    }
+  },
+  Status: {
+    screen: Status,
+    navigationOptions: {
+      title: ''
+    }
+  }
+}, {
+  initialRouteName: 'StatusScreen'
+})
+
 // Login flow navigator
 const AuthNavigator = createStackNavigator({
   SignUp: {
@@ -55,6 +75,8 @@ const AuthNavigator = createStackNavigator({
   SignIn: {
     screen: SignInScreen
   }
+}, {
+  initialRouteName: 'SignIn'
 })
 
 const AboutMeNavigator = createStackNavigator({
@@ -73,7 +95,7 @@ const AppDrawerNavigator = createDrawerNavigator({
   AboutMe: {
     screen: AboutMeNavigator,
     navigationOptions: {
-      drawerLabel: 'Sobre Mi',
+      drawerLabel: 'Sobre mi',
     }
   },
   Track: {
@@ -81,9 +103,21 @@ const AppDrawerNavigator = createDrawerNavigator({
     navigationOptions: {
       drawerLabel: 'Trackeo GPS',
     }
+  },
+  StatusDrawer: {
+    screen: StatusStack,
+    navigationOptions: {
+      title: 'Pantallas de estados'
+    }
+  },
+  Logout: {
+    screen: LogoutScreen,
+    navigationOptions: {
+      drawerLabel: 'Salir',
+    }
   }
 }, {
-    initialRouteName: 'AboutMe'
+    initialRouteName: 'AboutMe',
 })
 
 

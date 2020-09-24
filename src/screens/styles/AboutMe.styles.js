@@ -7,7 +7,17 @@ export default StyleSheet.create({
   containerResume: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+  },
+  containerAllResume: {
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    padding: 10,
+  },
+  containerSkillsBlank: {
+    marginTop: 10,
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    padding: 10,
   },
   containerRowResume: {
     alignItems: 'center',
@@ -16,12 +26,11 @@ export default StyleSheet.create({
   },
   text: {
     marginTop: 10,
-    fontSize: 16,
     marginBottom: 10
   },
   photoContainer: {
     alignItems: 'center',
-    height: 200,
+    height: 250,
     justifyContent: 'center'
   },  
   image: {
@@ -41,10 +50,10 @@ export default StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 40
+    marginTop: 20,
+    marginBottom: 20
   },
   containerSkills: {
-    marginTop: 20,
   },
   containerSkillsRow: {
     flexDirection: 'row',
@@ -52,5 +61,8 @@ export default StyleSheet.create({
   },
   containerCircle: {
     alignItems: 'center'
+  },
+  buttons: {
+    width: '100%'
   }
 });

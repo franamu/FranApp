@@ -31,5 +31,8 @@ export default StyleSheet.create({
   },
   menuOptions: {
     backgroundColor: '#8395a7'
+  },
+  white: {
+    backgroundColor: '#ffffff'
   }
 });

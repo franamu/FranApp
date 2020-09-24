@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import Spacer from './Spacer';
 import { Text, Button, Input } from 'react-native-elements';
 
-const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
+const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText, loading }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,6 +16,9 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
         onChangeText={ email =>  setEmail(email)}
         autoCapitalize="none"
         autoCorrect={false}
+        inputStyle={styles.containerInput}
+        labelStyle={styles.label}
+        placeholder="Email"
       />
       <Input
         secureTextEntry
@@ -24,9 +27,12 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
         onChangeText={ password => setPassword(password)}
         autoCapitalize="none"
         autoCorrect={false}
+        inputStyle={styles.containerInput}
+        labelStyle={styles.label}
+        placeholder="Password"
       />
       { errorMessage ? <Text style={styles.errorMessage}>{ errorMessage }</Text> : null}
-      <Button title={submitButtonText} onPress={() => onSubmit({ email, password })}/>
+      <Button title={submitButtonText} loading={loading} onPress={() => onSubmit({ email, password })}/>
     </Spacer>
   );
 }
@@ -38,7 +44,19 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   headerText: {
-    marginBottom: 20
+    marginBottom: 20,
+    color : '#ffffff'
+  },
+  containerInput: {
+    backgroundColor: '#ffffff',
+    padding: 10,
+    borderBottomWidth: 2,
+    borderColor: '#a5b1c2',
+    borderRadius: 2,
+    color: '#a5b1c2'
+  },
+  label: {
+    color: "#ffffff"
   }
 });
 

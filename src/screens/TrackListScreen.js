@@ -3,6 +3,7 @@ import { FlatList, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { NavigationEvents } from 'react-navigation';
 import { Context as TrackContext } from '../context/TrackContext';
+import BarsIcon from '../components/BarsIcon';
 
 const TrackListScreen = ({ navigation }) => {
   const { state, fetchTracks } = useContext(TrackContext);
@@ -23,9 +24,11 @@ const TrackListScreen = ({ navigation }) => {
   );
 };
 
-TrackListScreen.navigationOptions = () => {
+TrackListScreen.navigationOptions = ({ navigation }) => {
   return {
-    title: 'Tramos'
+    headerLeft: ( ) => (
+      <BarsIcon navigation={navigation} />
+    )
   }
 }
 
