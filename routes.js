@@ -15,7 +15,7 @@ import TrackListScreen from './src/screens/TrackListScreen';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import StatusScreen from './src/screens/StatusScreen';
 import Status from './src/screens/Status';
-
+import JobsScreen from './src/screens/JobsScreen';
 // Helpers
 import LogoutScreen from './src/screens/Logout';
 
@@ -24,31 +24,29 @@ import AboutMe from './src/screens/AboutMe';
 
 // Project Tracking
 const trackListNavigator = createStackNavigator({
-  TrackList: TrackListScreen,
-  TrackDetail: TrackDetailScreen,
+  TrackList: {
+    screen: TrackListScreen,
+    navigationOptions: {
+      title: 'Lista de tus tramos'
+    }
+  },
+  TrackDetail: {
+    screen: TrackDetailScreen,
+    navigationOptions: {
+      title: 'Detalle del tramo'
+    }
+  }
 }, {
   navigationOptions: {
-    title: 'Tramos',
     tabBarIcon: <Icon name="th-list" size={20} />
   }
 });
 
-const FlowBottomTrack = createBottomTabNavigator({
+const AppContainer = createBottomTabNavigator({
   TrackList: trackListNavigator,
   TrackCreate: TrackCreateScreen
-}, {
-    initialRouteName: 'TrackList'
 })
 
-// Add all navigator project here
-const AppContainer = createStackNavigator({
-  FlowTrack: {
-    screen: FlowBottomTrack,
-    navigationOptions: {
-      title: 'Sistema de trackeo'
-    }
-  },
-});
 
 const StatusStack = createStackNavigator({
   StatusScreen: {
@@ -88,7 +86,15 @@ const AboutMeNavigator = createStackNavigator({
   },
 });
 
-//About me 
+//Jobs and proyects 
+const JobsNavigator = createStackNavigator({
+  JobsScreen: {
+    screen: JobsScreen,
+    navigationOptions: {
+      title: 'Trabajos y Proyectos'
+    }
+  },
+});
 
 // Drawer with all stack projects navigators
 const AppDrawerNavigator = createDrawerNavigator({
@@ -108,6 +114,12 @@ const AppDrawerNavigator = createDrawerNavigator({
     screen: StatusStack,
     navigationOptions: {
       title: 'Pantallas de estados'
+    }
+  },
+  JobsScreen: {
+    screen: JobsNavigator,
+    navigationOptions: {
+      title: 'Trabajos y Proyectos'
     }
   },
   Logout: {

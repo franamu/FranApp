@@ -6,14 +6,19 @@ import { Context as AuthContext } from '../context/AuthContext';
 import AuthForm from '../components/AuthForm';
 import glogalStyles from '../globalStyles';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({ navigation }) => {
   const { state, signup, clearErrorMessage } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
   const signUp = async ({ email, password }) => {
     setLoading(true);
-    await signup({ email, password });
+    const resp = await signup({ email, password });
     setLoading(false);
+    if (resp.error) {
+      return;
+    }
+
+    navigation.navigate('App');
   }
 
   return (

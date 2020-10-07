@@ -6,13 +6,20 @@ import NavLink from '../components/NavLink';
 import { Context as AuthContext } from '../context/AuthContext';
 import glogalStyles from '../globalStyles';
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation }) => {
   const { state, signin, clearErrorMessage } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+
   const signIn = async ({ email, password }) => {
     setLoading(true);
-    await signin({ email, password });
+    const resp = await signin({ email, password });
     setLoading(false);
+    if (resp.error) {
+      return;
+    }
+
+    navigation.navigate('App');
+
   }
 
   return (
@@ -26,6 +33,7 @@ const SignInScreen = () => {
         submitButtonText="Ingresar"
         onSubmit={signIn}
         loading={loading}
+        navigation={navigator}
       />
       <NavLink routeName="SignUp" text="No tienes una cuenta? Crea una desde acá" />
     </View>

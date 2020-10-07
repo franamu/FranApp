@@ -26,7 +26,7 @@ const TrackListScreen = ({ navigation }) => {
 
 TrackListScreen.navigationOptions = ({ navigation }) => {
   return {
-    headerLeft: ( ) => (
+    headerLeft: () => (
       <BarsIcon navigation={navigation} />
     )
   }

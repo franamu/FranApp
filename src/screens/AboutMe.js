@@ -24,7 +24,7 @@ const AboutMe = ({ navigation }) => {
           <View style={styles.containerResume}>
             <View style={styles.containerRowResume}>
               <Icon name="project-diagram" size={50} color={globalStyles.textTertiary.color} />
-              <Text style={[globalStyles.text, styles.text]}>+15 Proyectos</Text>
+              <Text style={[globalStyles.text, styles.text]}>+7 Proyectos</Text>
             </View>
             <View style={styles.containerRowResume }>
               <Icon name="briefcase" size={50} color={globalStyles.textTertiary.color} />
@@ -44,7 +44,7 @@ const AboutMe = ({ navigation }) => {
             </View>
           </View>
 
-          <Button title="Ver más" buttonStyle={[styles.buttons, globalStyles.secondary]} />
+          <Button title="Ver más" buttonStyle={[styles.buttons, globalStyles.secondary]} onPress={() => navigation.navigate('JobsScreen')} />
         </View>
           <View style={styles.containerSkillsBlank}>
             <View style={styles.containerTitle}>
@@ -95,7 +95,7 @@ const AboutMe = ({ navigation }) => {
                   </ProgressCircle>
                 </View>
                 <View style={styles.containerCircle}>
-                <Text style={[globalStyles.text, styles.text]}>React-Native</Text>
+                <Text style={[globalStyles.text, styles.text]}>React Native</Text>
                 <ProgressCircle
                     percent={70}
                     radius={50}

@@ -10,7 +10,7 @@ export default () => {
     <TrackProvider>
       <LocationProvider>
         <AuthProvider>
-            <App ref={ (navigator) => { setNavigator(navigator) }}/>
+            <App />
           </AuthProvider>
       </LocationProvider>
     </TrackProvider>

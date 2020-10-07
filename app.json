@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "FranApp",
-    "slug": "FranApp",
+    "name": "Fran Amu",
+    "slug": "fran_amuchastegui",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/app-icon.png",
+    "icon": "./assets/iconGooglePlay.png",
     "splash": {
       "image": "./assets/app-icon.png",
       "resizeMode": "contain",
@@ -23,7 +23,7 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.franamuchastegui.FranApp",
+      "package": "com.franamu.FranApp",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyDwKE-8WEOZIapPUa515fD7iRroAlEtlWM"
